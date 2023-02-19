@@ -17,16 +17,25 @@
 # Вывод:
 # Парам пам-пам
 
-# Способ 3: через лямбда функцию
+# Способ 3: Решение через лямбда функцию:
 
 
-vowels = ['а', 'о', 'э', 'е', 'и', 'ы', 'у', 'ё', 'ю', 'я'] # список шласных букв алфавита
+vowels = ['а', 'о', 'э', 'е', 'и', 'ы', 'у', 'ё', 'ю', 'я']    # список гласных букв алфавита
 song = input('введите текст песни винипуха: ').lower().split() # ввод песни винипуха
-print(song) # печать песни винипуха
-ref_lambda = lambda x: sum(1 for i in x if i in vowels)
-sum_vowels_first_phrase1 = ref_lambda(song[0])
-print(sum_vowels_first_phrase1)
-if (ref_lambda[i] == sum_vowels_first_phrase1 for i in vowels):
-    print('Парам-пам-пам')
+print(song)                                                    # печать песни винипуха
+
+ref_lambda = lambda x: sum(1 for i in x if i in vowels) # описываем функцию, 
+                                                        # нахождения суммы гласных букв 
+
+sum_vowels_first_phrase1 = ref_lambda(song[0])          # находим количество гласных букв
+                                                        # в первой фразе
+
+print(sum_vowels_first_phrase1) # печатаем количество гласных букв в первой фразе
+
+if all([ref_lambda(i) == sum_vowels_first_phrase1 for i in song]): # если суммы гласных
+                                                                   # во всех 3 фразах 
+                                                                   # равны, то: True 
+                                                                   # и рифма есть
+    print('Парам-пам-пам') # рифма есть, печатаем парам-пам-пам
 else:
-    print('Пам-парам')
+    print('Пам-парам') # рифмы нет, печатаем пам-парам
